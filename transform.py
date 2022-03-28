@@ -1,3 +1,4 @@
+import os
 import requests
 from requests_oauthlib import OAuth1
 import pandas as pd
@@ -8,10 +9,10 @@ from pprint import pprint
 from operator import itemgetter
 
 def auth_twitter():
-    CONSUMER_KEY = 'ZaJ0lPKNd7lWw0HwO7zEVHHss'
-    CONSUMER_SECRET = 'nyaZBuwWmUOz0MKVDmPIcf0gu7RoG6maW6rZZv6kJwK8lmxiOy'
-    ACCESS_KEY = '557568987-WxmlqajzyOPMbD59TpGM61oXiHRRkvossWyMdW9S'
-    ACCESS_SECRET = '8Ojyf3JNcljGVcNYMQdknRn3SMtG29knXfyToDIUkU6B0'
+    CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
+    CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+    ACCESS_KEY = os.environ.get('ACCESS_KEY')
+    ACCESS_SECRET = os.environ.get('ACCESS_SECRET')
 
     auth_url = 'https://api.twitter.com/1.1/account/verify_credentials.json'
     auth = OAuth1(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
